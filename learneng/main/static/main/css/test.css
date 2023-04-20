@@ -1,0 +1,61 @@
+.test_form {
+  background: #fff;
+  text-align: center;
+  padding: 40px; }
+  @media (max-width: 991px) {
+    .register_form {
+      margin-top: 60px; } }
+  .register_form h3 {
+    font-size: 24px;
+    margin-bottom: 0; }
+  .register_form input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #eeeeee;
+    padding: 12px; }
+    .register_form input:focus {
+      outline: none;
+      box-shadow: none; }
+    .register_form input.placeholder {
+      color: #aaaaaa;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: "Roboto", sans-serif; }
+    .register_form input:-moz-placeholder {
+      color: #aaaaaa;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: "Roboto", sans-serif; }
+    .register_form input::-moz-placeholder {
+      color: #aaaaaa;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: "Roboto", sans-serif; }
+    .register_form input::-webkit-input-placeholder {
+      color: #aaaaaa;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: "Roboto", sans-serif; }
+  .register_form .primary-btn {
+    width: 100%;
+    border-radius: 0;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 30px; }
+
+.test_button {
+    background: #fdc632;
+    padding: 0px 48px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 50px;
+    border: none;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+}
+.test_button:hover {
+    background: #002347;
+    color: #fdc632;
+}

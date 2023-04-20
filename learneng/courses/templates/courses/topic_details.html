@@ -1,0 +1,251 @@
+{% load static %}
+{% load embed_video_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <title>{{ topic.title }}</title>
+
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static '/main/favicons2/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static '/main/favicons2/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static '/main/favicons2/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static '/main/favicons2/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static '/main/favicons2/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!-- end favicons -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/flaticon.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/themify-icons.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/vendors/owl-carousel/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/vendors/nice-select/css/nice-select.css' %}" />
+    <!-- main css -->
+    <link rel="stylesheet" href="{% static 'main/css/style1.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/tbot.css' %}" />
+  </head>
+
+  <body>
+
+    <!--================ Start Header Menu Area =================-->
+    {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <header class="header_area">
+                <div class="main_menu">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <div class="container">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <a class="navbar-brand logo_h" href="#">
+                                <img src="{% static 'main/img/logo/logo_dark.png' %}" alt=""/></a>
+                            <button class="navbar-toggler" type="button"
+                                    data-toggle="collapse" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="icon-bar"></span> <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse offset">
+                                <ul class="nav navbar-nav menu_nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'home' %}">Главная</a>
+                                    </li>
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="{% url 'courses_home' %}">Уроки</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'knowledge_base' %}">База знаний</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'about' %}">О нас</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled" href="{% url 'about' %}">|</a>
+                                    </li>
+                                    <li class="nav-item submenu dropdown">
+                                        <a href="#"
+                                           class="nav-link dropdown-toggle"
+                                           data-toggle="dropdown"
+                                           role="button"
+                                           aria-haspopup="true"
+                                           aria-expanded="false">{{ user.username }}</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'create' %}">Добавить Урок</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'create_topics' %}">Добавить Топик</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        {% else %}
+            <header class="header_area">
+                <div class="main_menu">
+                    <nav class="navbar navbar-expand-lg">
+                        <div class="container">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <a class="navbar-brand logo_h" href="#">
+                                <img src="{% static 'main/img/logo/logo_dark.png' %}" alt=""/></a>
+                            <button class="navbar-toggler" type="button"
+                                    data-toggle="collapse" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="icon-bar"></span> <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse offset">
+                                <ul class="nav navbar-nav menu_nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'home' %}">Главная</a>
+                                    </li>
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="{% url 'courses_home' %}">Уроки</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'knowledge_base' %}">База знаний</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'about' %}">О нас</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled" href="#">|</a>
+                                    </li>
+                                    <li class="nav-item submenu dropdown">
+                                        <a href="#"
+                                           class="nav-link dropdown-toggle"
+                                           data-toggle="dropdown"
+                                           role="button"
+                                           aria-haspopup="true"
+                                           aria-expanded="false">{{ user.username }}</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        {% endif %}
+    {% else %}
+        <header class="header_area">
+            <div class="main_menu">
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <a class="navbar-brand logo_h" href="#">
+                            <img src="{% static 'main/img/logo/logo_dark.png' %}" alt=""/></a>
+                        <button class="navbar-toggler" type="button"
+                                data-toggle="collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+
+                            <span class="icon-bar"></span> <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse offset">
+                            <ul class="nav navbar-nav menu_nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'home' %}">Главная</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{% url 'courses_home' %}">Уроки</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'knowledge_base' %}">База знаний</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'about' %}">О нас</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'signup' %}">Регистрация</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" href="{% url 'about' %}">|</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'login' %}">Войти</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    {% endif %}
+    <!--================ End Header Menu Area =================-->
+
+
+    <!-- Details_view -->
+    <div class="whole-wrap">
+		<div class="container">
+			<div class="section-top-border"><br><br><br><br><br>
+                <h5 class="mb-30 title_color">Категория: {{ topic.category }}</h5>
+                <h5 class="mb-30 title_color">Уровень: {{ topic.level }}</h5>
+                <div class="text-center"><br><br>
+                    <div class="divider py-1 bg-warning"></div>
+                    <h1 class="display-4 mb-30 title_color">{{ topic.title }}</h1>
+                    <div class="divider py-1 bg-warning"></div>
+                </div><br>
+				<div class="row">
+					<div class="col-md-12 mt-sm-20 left-align-p">
+						<p>{{ topic.full_text|linebreaks }}</p>
+                        <p class="card-text text-center"><small>Дата публикации: {{ topic.added }}</small></p>
+					</div>
+                    <div class="col-lg-12 text-center"><br><br>
+                      <a href="{% url 'courses_home' %}" class="primary-btn" type="button">Вернуться</a><br><br>
+                    </div>
+				</div>
+			</div><br>
+        </div>
+    </div>
+    <!-- End Details_view -->
+
+
+    <!--================ Start footer Area  =================-->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="col-lg-12 single-footer-widget"><br><br><br>
+                <div class="col-lg-12">
+                    <ul class="nav justify-content-center border-bottom pb-3">
+                        <li><a href="{% url 'home' %}"><p class="col-lg-12 text-white">Главная</p></a></li>
+                        <li><a href="{% url 'courses_home' %}"><p class="col-lg-12 text-white">Уроки</p></a></li>
+                        <li><a href="{% url 'knowledge_base' %}"><p class="col-lg-12 text-white">База знаний</p></a></li>
+                        <li><a href="{% url 'about' %}"><p class="col-lg-12 text-white">О нас</p></a></li>
+                        <li><a href="{% url 'test' %}"><p class="col-lg-12 text-white">Тестирование</p></a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom">
+                    <p class="col-lg-12 text-white text-center">
+                        <a class="text-white" href="http://127.0.0.1:8000/admin/"><u>Вход для администратора</u></a><br><br>
+                        © 2021 LearnEng Company, Inc
+                    </p>
+                </div><br><br><br>
+            </div>
+        </div>
+    </footer>
+    <!--================ End footer Area  =================-->
+
+  </body>
+</html>
+
+
